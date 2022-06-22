@@ -10,7 +10,10 @@
 .header_icons {
   margin-right: 15px !important;
 }
-
+a {
+  text-decoration: none;
+  color: #ffff;
+}
 .bosch_logo {
   padding-left: 50px !important;
 }
