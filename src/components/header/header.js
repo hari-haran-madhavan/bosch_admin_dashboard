@@ -48,7 +48,10 @@ class Header extends React.Component {
           <Grid item xs={4} textAlign={'right'}>
             <Item>
               <CircleNotificationsIcon className='header_icons' />
-              <ContactSupportIcon className='header_icons' />
+              <a href='https://inside-docupedia.bosch.com/confluence/display/cines4info/JMaaS+-+Self-Service+Portal'>
+                <ContactSupportIcon className='header_icons' />
+              </a>
+
               <PersonIcon className='header_icons' />
             </Item>
           </Grid>
