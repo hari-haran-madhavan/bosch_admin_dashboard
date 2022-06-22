@@ -16,10 +16,10 @@ const Item = styled(Paper)(({ theme }) => ({
 class Header extends React.Component {
   render() {
     return (
-      <div>
+      <div className='header_div'>
         <Grid container>
-          <Grid item xs={4} textAlign={'center'} borderRadius={0}>
-            <Item>
+          <Grid item xs={4} textAlign={'left'}>
+            <Item className='bosch_logo'>
               <svg xmlns='http://www.w3.org/2000/svg' width={100} height={24} viewBox='0 0 433 97'>
                 <g>
                   <g id='logotype'>
@@ -47,9 +47,9 @@ class Header extends React.Component {
           </Grid>
           <Grid item xs={4} textAlign={'right'}>
             <Item>
-              <CircleNotificationsIcon style={{ marginRight: '15px' }} />
-              <ContactSupportIcon style={{ marginRight: '15px' }} />
-              <PersonIcon style={{ marginRight: '15px' }} />
+              <CircleNotificationsIcon className='header_icons' />
+              <ContactSupportIcon className='header_icons' />
+              <PersonIcon className='header_icons' />
             </Item>
           </Grid>
         </Grid>
