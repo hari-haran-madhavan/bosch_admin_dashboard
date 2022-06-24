@@ -21,12 +21,12 @@ class Header extends React.Component {
         <Grid container>
           <Grid item xs={4} textAlign={'left'}>
             <Item className='bosch_logo'>
-              <img src={logo} width={100} height={24} alt='Bosch Logo' />
+              <img src={logo} width={130} height={29.2} alt='Bosch Logo' />
             </Item>
           </Grid>
           <Grid item xs={4} textAlign={'center'}>
             <Item>
-              <span style={{ fontSize: '20.5px' }}>JMaas Self Service</span>
+              <span style={{ fontSize: '24px' }}>JMaas Self Service</span>
             </Item>
           </Grid>
           <Grid item xs={4} textAlign={'right'}>
