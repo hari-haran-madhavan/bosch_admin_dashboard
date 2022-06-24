@@ -8,7 +8,10 @@
 }
 
 .header_icons {
-  margin-right: 15px !important;
+  margin-right: 20px !important;
+  font-size: 29px !important;
+  /* color: rgb(134 173 210); */
+  color: #ffff;
 }
 a {
   text-decoration: none;
