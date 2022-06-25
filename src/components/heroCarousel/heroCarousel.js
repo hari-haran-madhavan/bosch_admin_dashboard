@@ -37,7 +37,7 @@ class HeroCarousel extends React.Component {
     const timezone = dateAsString.match(/\(([^)]+)\)$/)[1];
     const date = `${current.getHours()}:${current.getMinutes() + 1}:${current.getSeconds()}`;
     return (
-      <div>
+      <div className='carousel_div'>
         <Grid container className='carousel_grid'>
           <Grid item xs={4} textAlign={'left'} paddingLeft={5} fontSize={25}>
             Welcome to JMaas Self Service
@@ -50,7 +50,8 @@ class HeroCarousel extends React.Component {
         <Carousel responsive={responsive} className='carousel_hero'>
           <div className='carousel_cards'>
             <NoteAddIcon className='carousel_card_icon' />
-            <h3>Create New Instance</h3>
+            <h3 className='card_adjust'>Create New Instance</h3>
+
             <p>Create an instance on Jmaas</p>
           </div>
           <div className='carousel_cards'>
