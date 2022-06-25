@@ -1,0 +1,12 @@
+.instances_table {
+  padding: 15px !important;
+}
+.table_head {
+  background-color: rgb(29 100 168) !important;
+  color: #fff !important;
+  font-weight: bold;
+  font-size: 15px;
+}
+.table_search {
+  background-color: #fff;
+}
