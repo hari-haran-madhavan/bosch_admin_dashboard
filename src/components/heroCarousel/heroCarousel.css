@@ -4,6 +4,7 @@
 }
 .carousel_div {
   background-color: rgb(244 243 243);
+  cursor: pointer;
 }
 .carousel_hero {
   padding: 15px;
@@ -29,4 +30,11 @@
 
 .carousel_cards p {
   font-size: 15px;
+}
+
+.dialog_cards {
+  color: rgb(29 100 168) !important;
+}
+.css-1t1j96h-MuiPaper-root-MuiDialog-paper {
+  color: rgb(29 100 168) !important;
 }
