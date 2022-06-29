@@ -3,6 +3,7 @@ import * as React from 'react';
 // npm install react-multi-carousel --save
 import 'react-multi-carousel/lib/styles.css';
 import '../heroCarousel/heroCarousel.css';
+import Carousels from './carousel/carousel';
 // const responsive = {
 //   superLargeDesktop: {
 //     // the naming can be any, depends on you.
@@ -45,6 +46,7 @@ class HeroCarousel extends React.Component {
         <Carousels head='icon_head' />
         <Carousels head='icon_head' />
         <Carousels head='icon_head' /> */}
+        <Carousels />
       </div>
     );
   }
