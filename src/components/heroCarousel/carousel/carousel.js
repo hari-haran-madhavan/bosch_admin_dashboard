@@ -15,6 +15,7 @@ import TextField from '@mui/material/TextField';
 import React from 'react';
 import Carousel from 'react-multi-carousel';
 import 'react-multi-carousel/lib/styles.css';
+import DynamicCarousel from '../../dynamicCarousel/dynamicCarousel';
 import '../heroCarousel.css';
 
 const responsive = {
@@ -79,6 +80,9 @@ class Carousels extends React.Component {
   render() {
     return (
       <div>
+        <DynamicCarousel name='Create New Instance' description='Create an instance on Jmaas' icon="<NoteAddIcon className='carousel_card_icon' />" />
+        <DynamicCarousel name='Create New Instance' description='Create an instance on Jmaas' icon="<NoteAddIcon className='carousel_card_icon' />" />
+        <DynamicCarousel name='Create New Instance' description='Create an instance on Jmaas' icon="<NoteAddIcon className='carousel_card_icon' />" />
         {/*uncomment this*/}
         {/* <Carousel responsive={responsive}>
           <div className='carousel_cards'>
