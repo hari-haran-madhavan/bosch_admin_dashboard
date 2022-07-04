@@ -164,46 +164,29 @@ class Carousels extends React.Component {
 
         <Carousel responsive={responsive} className='carousel_hero'>
           <div className='carousel_cards' onClick={this.handleClickNewInstance}>
-            <Icons name='create' className='carousel_card_icon' />
-            <h3 className='card_adjust'>Create New Instance</h3>
-            <p>Create an instance on Jmaas</p>
+            <Icons icon='create' description='Create an instance on Jmaas' name='Create New Instance' className='carousel_card_icon' />
           </div>
 
           <div className='carousel_cards' onClick={this.handleClickScheduleUpdate}>
-            <Icons name='update' className='carousel_card_icon' />
-            <h3>Schedule Update</h3>
-            <p>Schedule Update for an instance on Jmaas</p>
+            <Icons icon='update' description='Schedule Update for an instance on Jmaas' name='Schedule Update' className='carousel_card_icon' />
           </div>
           <div className='carousel_cards' onClick={this.handleClickComingSoon}>
-            <Icons name='restart' className='carousel_card_icon' />
-            <h3>Schedule Restart</h3>
-            <p>Schedule Restart for an instance on JMaas</p>
+            <Icons icon='restart' description='Schedule Restart for an instance on JMaas' name='Schedule Restart' className='carousel_card_icon' />
           </div>
           <div className='carousel_cards' onClick={this.handleClickNewInstance}>
-            <Icons name='settings' className='carousel_card_icon' />
-            <h3>Configure Instance</h3>
-            <p>Enable sso, JDK 11, Java Parameters</p>
+            <Icons icon='settings' description='Enable sso, JDK 11, Java Parameters' name='Configure Instance' className='carousel_card_icon' />
           </div>
           <div className='carousel_cards' onClick={this.handleClickNewInstance}>
-            <Icons name='notification' className='carousel_card_icon' />
-            <h3>Configure Alerts</h3>
-            <p>Configure Alerts for an instance on JMaas</p>
+            <Icons icon='notification' description='Configure Alerts for an instance on JMaas' name='Configure Alerts' className='carousel_card_icon' />
           </div>
           <div className='carousel_cards' onClick={this.handleClickNewInstance}>
-            <Icons name='play' className='carousel_card_icon' />
-
-            <h3>Start jenkins</h3>
-            <p>Start a jenkins instance on JMaas</p>
+            <Icons icon='play' description='Start a jenkins instance on JMaas' name='Start jenkins' className='carousel_card_icon' />
           </div>
           <div className='carousel_cards' onClick={this.handleClickNewInstance}>
-            <Icons name='settings' className='carousel_card_icon' />
-            <h3>Configure Instance</h3>
-            <p>Enable sso, JDK 11, Java Parameters</p>
+            <Icons icon='settings' description='Enable sso, JDK 11, Java Parameters' name='Configure Instance' className='carousel_card_icon' />
           </div>
           <div className='carousel_cards' onClick={this.handleClickNewInstance}>
-            <Icons name='settings' className='carousel_card_icon' />
-            <h3>Configure Instance</h3>
-            <p>Enable sso, JDK 11, Java Parameters</p>
+            <Icons icon='settings' description='Enable sso, JDK 11, Java Parameters' name='Configure Instance' className='carousel_card_icon' />
           </div>
         </Carousel>
       </div>
