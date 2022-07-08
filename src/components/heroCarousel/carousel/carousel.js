@@ -9,30 +9,9 @@ import MenuItem from '@mui/material/MenuItem';
 import Select from '@mui/material/Select';
 import TextField from '@mui/material/TextField';
 import * as React from 'react';
-import Carousel from 'react-multi-carousel';
 import 'react-multi-carousel/lib/styles.css';
+import Notification from '../feature';
 import '../heroCarousel.css';
-import Icons from '../icon';
-
-const responsive = {
-  superLargeDesktop: {
-    // the naming can be any, depends on you.
-    breakpoint: { max: 4000, min: 3000 },
-    items: 8,
-  },
-  desktop: {
-    breakpoint: { max: 3000, min: 1024 },
-    items: 6,
-  },
-  tablet: {
-    breakpoint: { max: 1024, min: 464 },
-    items: 4,
-  },
-  mobile: {
-    breakpoint: { max: 464, min: 0 },
-    items: 3,
-  },
-};
 
 class Carousels extends React.Component {
   constructor(props) {
@@ -162,7 +141,7 @@ class Carousels extends React.Component {
         </Dialog>
         {/* Dialogs ends*/}
 
-        <Carousel responsive={responsive} className='carousel_hero'>
+        {/* <Carousel responsive={responsive} className='carousel_hero'>
           <div className='carousel_cards' onClick={this.handleClickNewInstance}>
             <Icons icon='create' description='Create an instance on Jmaas' name='Create New Instance' className='carousel_card_icon' />
           </div>
@@ -188,7 +167,8 @@ class Carousels extends React.Component {
           <div className='carousel_cards' onClick={this.handleClickNewInstance}>
             <Icons icon='settings' description='Enable sso, JDK 11, Java Parameters' name='Configure Instance' className='carousel_card_icon' />
           </div>
-        </Carousel>
+        </Carousel> */}
+        <Notification />
       </div>
     );
   }
