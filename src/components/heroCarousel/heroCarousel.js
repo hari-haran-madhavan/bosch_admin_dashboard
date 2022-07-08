@@ -40,12 +40,6 @@ class HeroCarousel extends React.Component {
             Timezone:{timezone} (Current Time : {date})
           </Grid>
         </Grid>
-        {/* uncomment this */}
-        {/* <Carousels head='icon_head' />
-        <Carousels head='icon_head' />
-        <Carousels head='icon_head' />
-        <Carousels head='icon_head' />
-        <Carousels head='icon_head' /> */}
         <Carousels />
       </div>
     );
