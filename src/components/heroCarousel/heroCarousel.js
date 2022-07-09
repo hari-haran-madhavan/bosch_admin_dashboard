@@ -2,27 +2,9 @@ import { Grid } from '@mui/material';
 import * as React from 'react';
 // npm install react-multi-carousel --save
 import 'react-multi-carousel/lib/styles.css';
+import Carousels from '../heroCarousel/carousel/carousel';
 import '../heroCarousel/heroCarousel.css';
-import Carousels from './carousel/carousel';
-// const responsive = {
-//   superLargeDesktop: {
-//     // the naming can be any, depends on you.
-//     breakpoint: { max: 4000, min: 3000 },
-//     items: 8,
-//   },
-//   desktop: {
-//     breakpoint: { max: 3000, min: 1024 },
-//     items: 6,
-//   },
-//   tablet: {
-//     breakpoint: { max: 1024, min: 464 },
-//     items: 4,
-//   },
-//   mobile: {
-//     breakpoint: { max: 464, min: 0 },
-//     items: 3,
-//   },
-// };
+
 class HeroCarousel extends React.Component {
   render() {
     let current = new Date();

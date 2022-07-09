@@ -2,6 +2,9 @@
   padding: 10px;
   color: rgb(29 100 168);
 }
+#postadd {
+  margin-bottom: 25px;
+}
 .carousel_div {
   background-image: url(../../assets/Bg.png);
   background-repeat: no-repeat;
