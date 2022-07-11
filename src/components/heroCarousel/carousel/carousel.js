@@ -1,5 +1,7 @@
 /* eslint-disable eqeqeq */
 import { Notifications as NotificationsIcon, PlayCircleOutline as PlayCircleOutlineIcon, PostAdd as PostAddIcon, Schedule as ScheduleIcon, Settings as SettingsIcon, SettingsApplications as SettingsApplicationsIcon, Update as UpdateIcon } from '@material-ui/icons';
+import CalendarTodayIcon from '@mui/icons-material/CalendarToday';
+import CancelIcon from '@mui/icons-material/Cancel';
 import { Grid } from '@mui/material';
 import Button from '@mui/material/Button';
 import Dialog from '@mui/material/Dialog';
@@ -69,6 +71,7 @@ function getIconByType(type = 'postadd') {
   });
   return iconWithStyles;
 }
+
 class Carousels extends React.Component {
   constructor(props) {
     super(props);
@@ -102,23 +105,12 @@ class Carousels extends React.Component {
           </DialogActions>
         </Dialog>
         {/* Schedule Update */}
-        <Dialog className='dialog_cards' fullWidth={true} maxWidth={true} open={scheduleUpdateDialog} onClose={() => this.HandleDialogChange('scheduleUpdateDialog', false)}>
-          <DialogTitle>Schedule Update for a instance</DialogTitle>
+        <Dialog className='dialog_cards' maxWidth={'md'} open={scheduleUpdateDialog} onClose={() => this.HandleDialogChange('scheduleUpdateDialog', false)}>
+          <DialogTitle className='dialog_title'>Schedule Update for a instance</DialogTitle>
           <DialogContent>
             <Grid container spacing={4}>
               <Grid item md={4}>
                 Cluster
-              </Grid>
-              <Grid item md={8}>
-                {/* <TextField autoFocus id='outlined-required name' margin='dense' type='email' fullWidth variant='standard' /> */}
-                <Select fullWidth={true} labelId='demo-simple-select-label' id='demo-simple-select'>
-                  <MenuItem value={10}>Ten</MenuItem>
-                  <MenuItem value={20}>Twenty</MenuItem>
-                  <MenuItem value={30}>Thirty</MenuItem>
-                </Select>
-              </Grid>
-              <Grid item md={4}>
-                Current jenkins version
               </Grid>
               <Grid item md={8}>
                 {/* <TextField autoFocus id='outlined-required name' margin='dense' type='email' fullWidth variant='standard' /> */}
@@ -140,7 +132,32 @@ class Carousels extends React.Component {
                 </Select>
               </Grid>
               <Grid item md={4}>
+                Current jenkins version
+              </Grid>
+              <Grid item md={8}>
+                {/* <TextField autoFocus id='outlined-required name' margin='dense' type='email' fullWidth variant='standard' /> */}
+                <Select fullWidth={true} labelId='demo-simple-select-label' id='demo-simple-select'>
+                  <MenuItem value={10}>Ten</MenuItem>
+                  <MenuItem value={20}>Twenty</MenuItem>
+                  <MenuItem value={30}>Thirty</MenuItem>
+                </Select>
+              </Grid>
+              <Grid item md={4}>
+                Jenkins Version
+              </Grid>
+              <Grid item md={8}>
+                <Select fullWidth={true} labelId='demo-simple-select-label' id='demo-simple-select'>
+                  <MenuItem value={10}>Ten</MenuItem>
+                  <MenuItem value={20}>Twenty</MenuItem>
+                  <MenuItem value={30}>Thirty</MenuItem>
+                </Select>
+              </Grid>
+              <Grid item md={4}>
                 Select date and time
+              </Grid>
+
+              <Grid item md={4}>
+                {/* <TextField autoFocus id='outlined-required name' margin='dense' type='email' fullWidth variant='standard' /> */}
               </Grid>
 
               <Grid item md={4}>
@@ -155,8 +172,13 @@ class Carousels extends React.Component {
             {/* <DialogContentText>To subscribe to this website, please enter your email address here. We will send updates occasionally.</DialogContentText> */}
           </DialogContent>
           <DialogActions>
-            <Button onClick={() => this.HandleDialogChange('scheduleUpdateDialog', false)}>Configure</Button>
-            <Button onClick={() => this.HandleDialogChange('scheduleUpdateDialog', false)}>Cancel</Button>
+            <Button className='confirm_button dialog_button' onClick={() => this.HandleDialogChange('scheduleUpdateDialog', false)}>
+              <CalendarTodayIcon className='confirm_button_icon' />
+              Schedule
+            </Button>
+            <Button className='dialog_button cancel_button' onClick={() => this.HandleDialogChange('scheduleUpdateDialog', false)}>
+              <CancelIcon fontSize='small' /> Cancel
+            </Button>
           </DialogActions>
         </Dialog>
         {/* coming soon */}
