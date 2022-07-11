@@ -2,6 +2,27 @@
   padding: 10px;
   color: rgb(29 100 168);
 }
+.dialog_title {
+  color: rgb(29 100 168);
+  border-bottom: #cccccc !important;
+}
+.confirm_button {
+  background-color: rgb(29 100 168) !important;
+  color: #fff !important;
+}
+.dialog_button {
+  padding: 5px 12px !important;
+}
+.cancel_button {
+  color: #413f3b !important;
+  background-color: #d8d2c9 !important;
+}
+.confirm_button_icon {
+  margin-right: 5px;
+}
+#postadd {
+  margin-bottom: 25px;
+}
 .carousel_div {
   background-image: url(../../assets/Bg.png);
   background-repeat: no-repeat;
