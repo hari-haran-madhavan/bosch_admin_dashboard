@@ -1,17 +1,5 @@
 /* eslint-disable eqeqeq */
 import { Notifications as NotificationsIcon, PlayCircleOutline as PlayCircleOutlineIcon, PostAdd as PostAddIcon, Schedule as ScheduleIcon, Settings as SettingsIcon, SettingsApplications as SettingsApplicationsIcon, Update as UpdateIcon } from '@material-ui/icons';
-import CalendarTodayIcon from '@mui/icons-material/CalendarToday';
-import CancelIcon from '@mui/icons-material/Cancel';
-import { Grid } from '@mui/material';
-import Button from '@mui/material/Button';
-import Dialog from '@mui/material/Dialog';
-import DialogActions from '@mui/material/DialogActions';
-import DialogContent from '@mui/material/DialogContent';
-import DialogContentText from '@mui/material/DialogContentText';
-import DialogTitle from '@mui/material/DialogTitle';
-import MenuItem from '@mui/material/MenuItem';
-import Select from '@mui/material/Select';
-import TextField from '@mui/material/TextField';
 import * as React from 'react';
 import Carousel from 'react-multi-carousel';
 import 'react-multi-carousel/lib/styles.css';
@@ -24,7 +12,7 @@ const feature_lists = [
   { type: 'settings', name: 'Configure Instance', description: 'Enable SSO, JDK 11, Java Parameters', dialog: 'configureInstanceDialog' },
   { type: 'notifications', name: 'Configure Alerts', description: 'Configure Alerts of an instance on JMaaS', dialog: 'configureAlertDialog' },
   { type: 'playcircle', name: 'Start Jenkins', description: 'Start a jenkins instance on JMaaS', dialog: 'startJenkins' },
-  { type: 'settingsapplications', name: 'Delete Instance', description: 'Delete a jenkins instance in JMaaS', dialog: 'comingsoon' },
+  { type: 'settingsapplications', name: 'Delete Instance', description: 'Delete a jenkins instance in JMaaS', dialog: 'deleteInstance' },
 ];
 
 const typesIcons = {
@@ -86,14 +74,15 @@ class Carousels extends React.Component {
     };
   }
   HandleDialogChange = (index, value) => {
-    this.setState({ [index]: value });
+    // this.setState({ [index]: value });
+    console.log('index', index, 'value', value);
   };
 
   render() {
     let { newInstanceDialog, scheduleRestartDialog, scheduleUpdateDialog, configureInstanceDialog, configureAlertDialog, startJenkins, comingsoon } = this.state;
     return (
       <div>
-        <Dialog className='dialog_cards' open={newInstanceDialog} onClose={() => this.HandleDialogChange('newInstanceDialog', false)}>
+        {/* <Dialog className='dialog_cards' open={newInstanceDialog} onClose={() => this.HandleDialogChange('newInstanceDialog', false)}>
           <DialogTitle>Schedule Restart</DialogTitle>
           <DialogContent>
             <DialogContentText>To subscribe to this website, please enter your email address here. We will send updates occasionally.</DialogContentText>
@@ -103,29 +92,18 @@ class Carousels extends React.Component {
             <Button onClick={() => this.HandleDialogChange('newInstanceDialog', false)}>Cancel</Button>
             <Button onClick={() => this.HandleDialogChange('newInstanceDialog', false)}>Subscribe</Button>
           </DialogActions>
-        </Dialog>
+        </Dialog> */}
         {/* Schedule Update */}
-        <Dialog className='dialog_cards' maxWidth={'md'} open={scheduleUpdateDialog} onClose={() => this.HandleDialogChange('scheduleUpdateDialog', false)}>
+        {/* <Dialog className='dialog_cards' maxWidth={'md'} open={scheduleUpdateDialog} onClose={() => this.HandleDialogChange('scheduleUpdateDialog', false)}>
           <DialogTitle className='dialog_title'>Schedule Update for a instance</DialogTitle>
           <DialogContent>
             <Grid container spacing={4}>
               <Grid item md={4}>
-                Cluster
-              </Grid>
-              <Grid item md={8}>
-                {/* <TextField autoFocus id='outlined-required name' margin='dense' type='email' fullWidth variant='standard' /> */}
-                <Select fullWidth={true} labelId='demo-simple-select-label' id='demo-simple-select'>
-                  <MenuItem value={10}>Ten</MenuItem>
-                  <MenuItem value={20}>Twenty</MenuItem>
-                  <MenuItem value={30}>Thirty</MenuItem>
-                </Select>
-              </Grid>
-              <Grid item md={4}>
                 Instance Name
               </Grid>
-              <Grid item md={8}>
-                {/* <TextField autoFocus id='outlined-required name' margin='dense' type='email' fullWidth variant='standard' /> */}
-                <Select fullWidth={true} labelId='demo-simple-select-label' id='demo-simple-select'>
+              <Grid item md={8}> */}
+        {/* <TextField autoFocus id='outlined-required name' margin='dense' type='email' fullWidth variant='standard' /> */}
+        {/* <Select fullWidth={true} labelId='demo-simple-select-label' id='demo-simple-select'>
                   <MenuItem value={10}>Ten</MenuItem>
                   <MenuItem value={20}>Twenty</MenuItem>
                   <MenuItem value={30}>Thirty</MenuItem>
@@ -134,9 +112,9 @@ class Carousels extends React.Component {
               <Grid item md={4}>
                 Current jenkins version
               </Grid>
-              <Grid item md={8}>
-                {/* <TextField autoFocus id='outlined-required name' margin='dense' type='email' fullWidth variant='standard' /> */}
-                <Select fullWidth={true} labelId='demo-simple-select-label' id='demo-simple-select'>
+              <Grid item md={8}> */}
+        {/* <TextField autoFocus id='outlined-required name' margin='dense' type='email' fullWidth variant='standard' /> */}
+        {/* <Select fullWidth={true} labelId='demo-simple-select-label' id='demo-simple-select'>
                   <MenuItem value={10}>Ten</MenuItem>
                   <MenuItem value={20}>Twenty</MenuItem>
                   <MenuItem value={30}>Thirty</MenuItem>
@@ -156,21 +134,21 @@ class Carousels extends React.Component {
                 Select date and time
               </Grid>
 
-              <Grid item md={4}>
-                {/* <TextField autoFocus id='outlined-required name' margin='dense' type='email' fullWidth variant='standard' /> */}
-              </Grid>
+              <Grid item md={4}> */}
+        {/* <TextField autoFocus id='outlined-required name' margin='dense' type='email' fullWidth variant='standard' /> */}
+        {/* </Grid>
 
-              <Grid item md={4}>
-                {/* <TextField autoFocus id='outlined-required name' margin='dense' type='email' fullWidth variant='standard' /> */}
-                <Select fullWidth={true} labelId='demo-simple-select-label' id='demo-simple-select'>
+              <Grid item md={4}> */}
+        {/* <TextField autoFocus id='outlined-required name' margin='dense' type='email' fullWidth variant='standard' /> */}
+        {/* <Select fullWidth={true} labelId='demo-simple-select-label' id='demo-simple-select'>
                   <MenuItem value={10}>Ten</MenuItem>
                   <MenuItem value={20}>Twenty</MenuItem>
                   <MenuItem value={30}>Thirty</MenuItem>
                 </Select>
               </Grid>
-            </Grid>
-            {/* <DialogContentText>To subscribe to this website, please enter your email address here. We will send updates occasionally.</DialogContentText> */}
-          </DialogContent>
+            </Grid> */}
+        {/* <DialogContentText>To subscribe to this website, please enter your email address here. We will send updates occasionally.</DialogContentText> */}
+        {/* </DialogContent>
           <DialogActions>
             <Button className='confirm_button dialog_button' onClick={() => this.HandleDialogChange('scheduleUpdateDialog', false)}>
               <CalendarTodayIcon className='confirm_button_icon' />
@@ -180,9 +158,9 @@ class Carousels extends React.Component {
               <CancelIcon fontSize='small' /> Cancel
             </Button>
           </DialogActions>
-        </Dialog>
+        </Dialog> */}
         {/* coming soon */}
-        <Dialog className='dialog_cards' fullWidth={true} open={comingsoon} onClose={() => this.HandleDialogChange('comingsoon', false)}>
+        {/* <Dialog className='dialog_cards' fullWidth={true} open={comingsoon} onClose={() => this.HandleDialogChange('comingsoon', false)}>
           <DialogTitle>Coming soon</DialogTitle>
           <DialogContent>
             <DialogContentText>This feature will be available in the upcoming version.</DialogContentText>
@@ -190,7 +168,7 @@ class Carousels extends React.Component {
           <DialogActions>
             <Button onClick={() => this.HandleDialogChange('comingsoon', false)}>Cancel</Button>
           </DialogActions>
-        </Dialog>
+        </Dialog> */}
         {/* Dialogs ends*/}
         <Carousel responsive={responsive} className='carousel_hero'>
           {feature_lists.map(f => (
