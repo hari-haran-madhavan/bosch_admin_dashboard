@@ -4,6 +4,7 @@ import * as React from 'react';
 import Carousel from 'react-multi-carousel';
 import 'react-multi-carousel/lib/styles.css';
 import '../heroCarousel.css';
+import Dialogs from './dialogs';
 
 const feature_lists = [
   { type: 'postadd', name: 'Create Instance', description: 'Create an instance on JMaaS', dialog: 'newInstanceDialog' },
@@ -64,22 +65,17 @@ class Carousels extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      newInstanceDialog: false,
-      scheduleUpdateDialog: false,
-      scheduleRestartDialog: false,
-      configureInstanceDialog: false,
-      configureAlertDialog: false,
-      startJenkins: false,
-      comingsoon: false,
+      tag: null,
+      value: false,
     };
   }
-  HandleDialogChange = (index, value) => {
-    // this.setState({ [index]: value });
-    console.log('index', index, 'value', value);
+  HandleDialogChange = (dialog, open) => {
+    // this.setState({ [index]: open });
+    this.setState({ tag: dialog, value: open });
   };
 
   render() {
-    let { newInstanceDialog, scheduleRestartDialog, scheduleUpdateDialog, configureInstanceDialog, configureAlertDialog, startJenkins, comingsoon } = this.state;
+    // let { newInstanceDialog, scheduleRestartDialog, scheduleUpdateDialog, configureInstanceDialog, configureAlertDialog, startJenkins, comingsoon } = this.state;
     return (
       <div>
         {/* <Dialog className='dialog_cards' open={newInstanceDialog} onClose={() => this.HandleDialogChange('newInstanceDialog', false)}>
@@ -179,6 +175,7 @@ class Carousels extends React.Component {
             </div>
           ))}
         </Carousel>
+        {this.state.value ? <Dialogs value={this.state.tag} /> : ''}
       </div>
     );
   }
