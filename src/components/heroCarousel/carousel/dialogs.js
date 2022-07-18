@@ -44,12 +44,12 @@ const elements = [
     head: 'Coming soon',
   },
 ];
-export default function dialogs(props) {
+export default function Dialogs(props) {
   return elements.map(ele => (
     <div>
-      {' '}
-      {props.value == ele.head ? (
-        <Dialog className='dialog_cards' open={false} onClose={() => this.HandleDialogChange('newInstanceDialog', false)}>
+      {console.log(props.value)}
+      {props.value == ele.value ? (
+        <Dialog className='dialog_cards' open={true} onClose={() => this.HandleDialogChange('newInstanceDialog', false)}>
           <DialogTitle>{ele.head}</DialogTitle>
           <DialogContent>
             {ele.description ? <DialogContentText>{ele.description}</DialogContentText> : ''}
