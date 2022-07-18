@@ -4,11 +4,11 @@ import Button from '@mui/material/Button';
 import Dialog from '@mui/material/Dialog';
 import DialogActions from '@mui/material/DialogActions';
 import DialogContent from '@mui/material/DialogContent';
-import DialogContentText from '@mui/material/DialogContentText';
 import DialogTitle from '@mui/material/DialogTitle';
 import MenuItem from '@mui/material/MenuItem';
 import Select from '@mui/material/Select';
-import TextField from '@mui/material/TextField';
+import { useState } from 'react';
+import '../heroCarousel.css';
 const elements = [
   {
     value: 'newInstanceDialog',
@@ -44,22 +44,48 @@ const elements = [
     head: 'Coming soon',
   },
 ];
+
 export default function Dialogs(props) {
+  let [dialogOpen, dialogFunction] = useState(props.open);
+  console.log('props.open', props.open);
+  console.log('dialogOpen', dialogOpen);
+
+  function changeDialogs() {
+    dialogFunction((dialogOpen = false));
+    console.log('dialogOpen', dialogOpen);
+  }
+  // dialogOpen = props.open;
   return elements.map(ele => (
     <div>
-      {console.log(props.value)}
       {props.value == ele.value ? (
-        <Dialog className='dialog_cards' open={true} onClose={() => this.HandleDialogChange('newInstanceDialog', false)}>
-          <DialogTitle>{ele.head}</DialogTitle>
-          <DialogContent>
-            {ele.description ? <DialogContentText>{ele.description}</DialogContentText> : ''}
-            <TextField autoFocus margin='dense' id='name' label='Email Address' type='email' fullWidth variant='standard' />
-            {ele.fields.map(fielding => (
-              <Grid container spacing={4}>
+        <Dialog className='dialog_cards' open={dialogOpen} fullWidth={true} maxWidth='lg' onClose={changeDialogs}>
+          <DialogTitle
+            style={{
+              // borderWidth: '0.5px',
+              borderBottomStyle: 'solid',
+              borderBottomColor: '#c3c4c3',
+            }}>
+            {ele.head}
+          </DialogTitle>
+          <DialogContent
+            style={{
+              borderBottomStyle: 'solid',
+              borderBottomColor: '#c3c4c3',
+            }}>
+            {/* {ele.description ? <DialogContentText>{ele.description}</DialogContentText> : ''} */}
+            {/* <TextField autoFocus margin='dense' id='name' label='Email Address' type='email' fullWidth variant='standard' /> */}
+            {ele.fields?.map(fielding => (
+              <Grid
+                container
+                style={{
+                  marginTop: '10px',
+                  marginBottom: '10px',
+                }}
+                spacing={4}>
                 <Grid item md={4}>
                   {fielding.name}
                 </Grid>
-                <Grid item md={4}>
+                <Grid item md={8}>
                   <Select fullWidth={true} labelId='demo-simple-select-label' id='demo-simple-select'>
                     {fielding.options.map(optioning => (
                       <MenuItem value={optioning.key}>{optioning.key}</MenuItem>
@@ -70,8 +96,8 @@ export default function Dialogs(props) {
             ))}
           </DialogContent>
           <DialogActions>
-            <Button onClick={() => this.HandleDialogChange('newInstanceDialog', false)}>Cancel</Button>
-            <Button onClick={() => this.HandleDialogChange('newInstanceDialog', false)}>Subscribe</Button>
+            <Button onClick={changeDialogs}>Cancel</Button>
+            <Button onClick={changeDialogs}>Subscribe</Button>
           </DialogActions>
         </Dialog>
       ) : (

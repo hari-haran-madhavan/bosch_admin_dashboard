@@ -71,7 +71,10 @@ class Carousels extends React.Component {
   }
   HandleDialogChange = (dialog, open) => {
     // this.setState({ [index]: open });
-    this.setState({ tag: dialog, value: open });
+    let { tag, value } = this.state;
+    tag = dialog;
+    value = open;
+    this.setState({ tag, value });
   };
 
   render() {
@@ -175,7 +178,7 @@ class Carousels extends React.Component {
             </div>
           ))}
         </Carousel>
-        {this.state.value ? <Dialogs value={this.state.tag} /> : ''}
+        {this.state.value ? <Dialogs value={this.state.tag} open={this.state.value} /> : ''}
       </div>
     );
   }
