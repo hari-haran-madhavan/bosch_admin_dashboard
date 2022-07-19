@@ -1,11 +1,53 @@
 /* eslint-disable eqeqeq */
 import { Notifications as NotificationsIcon, PlayCircleOutline as PlayCircleOutlineIcon, PostAdd as PostAddIcon, Schedule as ScheduleIcon, Settings as SettingsIcon, SettingsApplications as SettingsApplicationsIcon, Update as UpdateIcon } from '@material-ui/icons';
+/* eslint-disable eqeqeq */
+import { Grid } from '@mui/material';
+import Button from '@mui/material/Button';
+import Dialog from '@mui/material/Dialog';
+import DialogActions from '@mui/material/DialogActions';
+import DialogContent from '@mui/material/DialogContent';
+import DialogTitle from '@mui/material/DialogTitle';
+import MenuItem from '@mui/material/MenuItem';
+import Select from '@mui/material/Select';
 import * as React from 'react';
 import Carousel from 'react-multi-carousel';
 import 'react-multi-carousel/lib/styles.css';
 import '../heroCarousel.css';
-import Dialogs from './dialogs';
-
+const elements = [
+  {
+    value: 'newInstanceDialog',
+    head: 'Schedule Update for a instance',
+    fields: [
+      { name: 'Instance Name', options: [{ key: '1' }, { key: '2' }, { key: '3' }] },
+      { name: 'Current jenkins version', options: [{ key: '1' }, { key: '2' }, { key: '3' }] },
+      { name: 'Jenkins Version', options: [{ key: '1' }, { key: '2' }, { key: '3' }] },
+    ],
+  },
+  {
+    value: 'scheduleUpdateDialog',
+    head: 'Coming soon',
+  },
+  {
+    value: 'scheduleRestartDialog',
+    head: 'Coming soon',
+  },
+  {
+    value: 'configureInstanceDialog',
+    head: 'Coming soon',
+  },
+  {
+    value: 'configureAlertDialog',
+    head: 'Coming soon',
+  },
+  {
+    value: 'startJenkins',
+    head: 'Coming soon',
+  },
+  {
+    value: 'deleteInstance',
+    head: 'Coming soon',
+  },
+];
 const feature_lists = [
   { type: 'postadd', name: 'Create Instance', description: 'Create an instance on JMaaS', dialog: 'newInstanceDialog' },
   { type: 'update', name: 'Schedule Update', description: 'Schedule update of an instance on JMaaS', dialog: 'scheduleUpdateDialog' },
@@ -67,15 +109,21 @@ class Carousels extends React.Component {
     this.state = {
       tag: null,
       value: false,
+      dialogOpen: false,
     };
   }
   HandleDialogChange = (dialog, open) => {
     // this.setState({ [index]: open });
-    this.setState({ tag: dialog, value: open });
+    let { tag, dialogOpen, value } = this.state;
+    tag = dialog;
+    value = open;
+    dialogOpen = open;
+    this.setState({ tag, value, dialogOpen });
+    console.log(tag, value, dialogOpen);
   };
-
   render() {
     // let { newInstanceDialog, scheduleRestartDialog, scheduleUpdateDialog, configureInstanceDialog, configureAlertDialog, startJenkins, comingsoon } = this.state;
+    let { dialogOpen } = this.state;
     return (
       <div>
         {/* <Dialog className='dialog_cards' open={newInstanceDialog} onClose={() => this.HandleDialogChange('newInstanceDialog', false)}>
@@ -175,7 +223,75 @@ class Carousels extends React.Component {
             </div>
           ))}
         </Carousel>
-        {this.state.value ? <Dialogs value={this.state.tag} /> : ''}
+        {this.state.value
+          ? elements.map(ele => (
+              <div>
+                {this.state.tag == ele.value ? (
+                  <Dialog
+                    className='dialog_cards'
+                    open={dialogOpen}
+                    fullWidth={true}
+                    maxWidth='lg'
+                    onClose={() => {
+                      this.HandleDialogChange(ele.value, false);
+                    }}>
+                    <DialogTitle
+                      style={{
+                        // borderWidth: '0.5px',
+                        borderBottomStyle: 'solid',
+                        borderBottomColor: '#c3c4c3',
+                      }}>
+                      {ele.head}
+                    </DialogTitle>
+                    <DialogContent
+                      style={{
+                        borderBottomStyle: 'solid',
+                        borderBottomColor: '#c3c4c3',
+                      }}>
+                      {/* {ele.description ? <DialogContentText>{ele.description}</DialogContentText> : ''} */}
+                      {/* <TextField autoFocus margin='dense' id='name' label='Email Address' type='email' fullWidth variant='standard' /> */}
+                      {ele.fields?.map(fielding => (
+                        <Grid
+                          container
+                          style={{
+                            marginTop: '10px',
+                            marginBottom: '10px',
+                          }}
+                          spacing={4}>
+                          <Grid item md={4}>
+                            {fielding.name}
+                          </Grid>
+                          <Grid item md={8}>
+                            <Select fullWidth={true} labelId='demo-simple-select-label' id='demo-simple-select'>
+                              {fielding.options.map(optioning => (
+                                <MenuItem value={optioning.key}>{optioning.key}</MenuItem>
+                              ))}
+                            </Select>
+                          </Grid>
+                        </Grid>
+                      ))}
+                    </DialogContent>
+                    <DialogActions>
+                      <Button
+                        onClick={() => {
+                          this.HandleDialogChange(ele.value, false);
+                        }}>
+                        Cancel
+                      </Button>
+                      <Button
+                        onClick={() => {
+                          this.HandleDialogChange(ele.value, false);
+                        }}>
+                        Subscribe
+                      </Button>
+                    </DialogActions>
+                  </Dialog>
+                ) : (
+                  ''
+                )}
+              </div>
+            ))
+          : ''}
       </div>
     );
   }
