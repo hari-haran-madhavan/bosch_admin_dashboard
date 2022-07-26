@@ -1,6 +1,6 @@
 /* eslint-disable eqeqeq */
+import { TextField } from '@material-ui/core';
 import { Notifications as NotificationsIcon, PlayCircleOutline as PlayCircleOutlineIcon, PostAdd as PostAddIcon, Schedule as ScheduleIcon, Settings as SettingsIcon, SettingsApplications as SettingsApplicationsIcon, Update as UpdateIcon } from '@material-ui/icons';
-/* eslint-disable eqeqeq */
 import { Grid } from '@mui/material';
 import Button from '@mui/material/Button';
 import Dialog from '@mui/material/Dialog';
@@ -16,36 +16,51 @@ import '../heroCarousel.css';
 const elements = [
   {
     value: 'newInstanceDialog',
-    head: 'Schedule Update for a instance',
-    fields: [
-      { name: 'Instance Name', options: [{ key: '1' }, { key: '2' }, { key: '3' }] },
-      { name: 'Current jenkins version', options: [{ key: '1' }, { key: '2' }, { key: '3' }] },
-      { name: 'Jenkins Version', options: [{ key: '1' }, { key: '2' }, { key: '3' }] },
-    ],
+    head: 'Create an instance from Jmaas service',
+    email: true,
+    buttons: [{ button: 'Cancel' }, { button: 'Create' }],
   },
   {
     value: 'scheduleUpdateDialog',
-    head: 'Coming soon',
+    head: 'Schedule Update for a instance',
+    fields: [
+      { name: 'Cluster', options: [{ key: '1' }, { key: '2' }, { key: '3' }] },
+      { name: 'Instance Name', options: [{ key: '1' }, { key: '2' }, { key: '3' }] },
+      { name: 'Current jenkins version', options: [{ key: '1' }, { key: '2' }, { key: '3' }] },
+      { name: 'Jenkins Version', options: [{ key: '1' }, { key: '2' }, { key: '3' }] },
+      { name: 'Select Date and Time', options: [{ key: '1' }, { key: '2' }, { key: '3' }] },
+    ],
+    buttons: [{ button: 'Cancel' }, { button: 'Schedule' }],
   },
   {
     value: 'scheduleRestartDialog',
-    head: 'Coming soon',
+    head: 'Schedule Restart',
+    fields: [
+      { name: 'Cluster', options: [{ key: '1' }, { key: '2' }, { key: '3' }] },
+      { name: 'Instance Name', options: [{ key: '1' }, { key: '2' }, { key: '3' }] },
+      { name: 'Cron entry', options: [{ key: '1' }, { key: '2' }, { key: '3' }] },
+    ],
+    buttons: [{ button: 'Cancel' }, { button: 'Configure' }],
   },
   {
     value: 'configureInstanceDialog',
     head: 'Coming soon',
+    buttons: [{ button: 'Cancel' }, { button: 'Configure' }],
   },
   {
     value: 'configureAlertDialog',
     head: 'Coming soon',
+    buttons: [{ button: 'Cancel' }, { button: 'Configure' }],
   },
   {
     value: 'startJenkins',
     head: 'Coming soon',
+    buttons: [{ button: 'Cancel' }, { button: 'Configure' }],
   },
   {
     value: 'deleteInstance',
     head: 'Coming soon',
+    buttons: [{ button: 'Cancel' }, { button: 'Configure' }],
   },
 ];
 const feature_lists = [
@@ -70,7 +85,6 @@ const typesIcons = {
 
 const responsive = {
   superLargeDesktop: {
-    // the naming can be any, depends on you.
     breakpoint: { max: 4000, min: 3000 },
     items: 8,
     slidesToSlide: 8,
@@ -119,10 +133,8 @@ class Carousels extends React.Component {
     value = open;
     dialogOpen = open;
     this.setState({ tag, value, dialogOpen });
-    console.log(tag, value, dialogOpen);
   };
   render() {
-    // let { newInstanceDialog, scheduleRestartDialog, scheduleUpdateDialog, configureInstanceDialog, configureAlertDialog, startJenkins, comingsoon } = this.state;
     let { dialogOpen } = this.state;
     return (
       <div>
@@ -231,7 +243,7 @@ class Carousels extends React.Component {
                     className='dialog_cards'
                     open={dialogOpen}
                     fullWidth={true}
-                    maxWidth='lg'
+                    maxWidth='md'
                     onClose={() => {
                       this.HandleDialogChange(ele.value, false);
                     }}>
@@ -249,13 +261,13 @@ class Carousels extends React.Component {
                         borderBottomColor: '#c3c4c3',
                       }}>
                       {/* {ele.description ? <DialogContentText>{ele.description}</DialogContentText> : ''} */}
-                      {/* <TextField autoFocus margin='dense' id='name' label='Email Address' type='email' fullWidth variant='standard' /> */}
+                      {ele.email ? <TextField autoFocus margin='dense' id='name' label='Email Address' type='email' fullWidth variant='standard' /> : ''}
                       {ele.fields?.map(fielding => (
                         <Grid
                           container
                           style={{
-                            marginTop: '10px',
-                            marginBottom: '10px',
+                            marginTop: '5px',
+                            marginBottom: '5px',
                           }}
                           spacing={4}>
                           <Grid item md={4}>
@@ -272,18 +284,14 @@ class Carousels extends React.Component {
                       ))}
                     </DialogContent>
                     <DialogActions>
-                      <Button
-                        onClick={() => {
-                          this.HandleDialogChange(ele.value, false);
-                        }}>
-                        Cancel
-                      </Button>
-                      <Button
-                        onClick={() => {
-                          this.HandleDialogChange(ele.value, false);
-                        }}>
-                        Subscribe
-                      </Button>
+                      {ele.buttons?.map(buttoning => (
+                        <Button
+                          onClick={() => {
+                            this.HandleDialogChange(ele.value, false);
+                          }}>
+                          {buttoning.button}
+                        </Button>
+                      ))}
                     </DialogActions>
                   </Dialog>
                 ) : (
