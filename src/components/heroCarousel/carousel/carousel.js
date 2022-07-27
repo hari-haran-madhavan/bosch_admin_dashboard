@@ -1,5 +1,5 @@
 /* eslint-disable eqeqeq */
-import { TextField } from '@material-ui/core';
+import { DialogContentText, TextField } from '@material-ui/core';
 import { Notifications as NotificationsIcon, PlayCircleOutline as PlayCircleOutlineIcon, PostAdd as PostAddIcon, Schedule as ScheduleIcon, Settings as SettingsIcon, SettingsApplications as SettingsApplicationsIcon, Update as UpdateIcon } from '@material-ui/icons';
 import { Grid } from '@mui/material';
 import Button from '@mui/material/Button';
@@ -9,6 +9,8 @@ import DialogContent from '@mui/material/DialogContent';
 import DialogTitle from '@mui/material/DialogTitle';
 import MenuItem from '@mui/material/MenuItem';
 import Select from '@mui/material/Select';
+// import { AdapterDateFns } from '@mui/x-date-pickers/AdapterDateFns';
+// import { LocalizationProvider } from '@mui/x-date-pickers/LocalizationProvider';
 import * as React from 'react';
 import Carousel from 'react-multi-carousel';
 import 'react-multi-carousel/lib/styles.css';
@@ -18,7 +20,10 @@ const elements = [
     value: 'newInstanceDialog',
     head: 'Create an instance from Jmaas service',
     email: true,
-    buttons: [{ button: 'Cancel' }, { button: 'Create' }],
+    buttons: [
+      { button: 'Cancel', primary: false },
+      { button: 'Create', primary: true },
+    ],
   },
   {
     value: 'scheduleUpdateDialog',
@@ -28,9 +33,12 @@ const elements = [
       { name: 'Instance Name', options: [{ key: '1' }, { key: '2' }, { key: '3' }] },
       { name: 'Current jenkins version', options: [{ key: '1' }, { key: '2' }, { key: '3' }] },
       { name: 'Jenkins Version', options: [{ key: '1' }, { key: '2' }, { key: '3' }] },
-      { name: 'Select Date and Time', options: [{ key: '1' }, { key: '2' }, { key: '3' }] },
+      { name: 'Select Date and Time', dualBox: true, options: [{ key: '1' }, { key: '2' }, { key: '3' }] },
     ],
-    buttons: [{ button: 'Cancel' }, { button: 'Schedule' }],
+    buttons: [
+      { button: 'Cancel', primary: false },
+      { button: 'Schedule', primary: true },
+    ],
   },
   {
     value: 'scheduleRestartDialog',
@@ -40,27 +48,46 @@ const elements = [
       { name: 'Instance Name', options: [{ key: '1' }, { key: '2' }, { key: '3' }] },
       { name: 'Cron entry', options: [{ key: '1' }, { key: '2' }, { key: '3' }] },
     ],
-    buttons: [{ button: 'Cancel' }, { button: 'Configure' }],
+    buttons: [
+      { button: 'Cancel', primary: false },
+      { button: 'Configure', primary: true },
+    ],
   },
   {
     value: 'configureInstanceDialog',
     head: 'Coming soon',
-    buttons: [{ button: 'Cancel' }, { button: 'Configure' }],
+    description: 'This feature will be available soon',
+    buttons: [
+      { button: 'Cancel', primary: false },
+      { button: 'Configure', primary: true },
+    ],
   },
   {
     value: 'configureAlertDialog',
     head: 'Coming soon',
-    buttons: [{ button: 'Cancel' }, { button: 'Configure' }],
+    description: 'This feature will be available soon',
+    buttons: [
+      { button: 'Cancel', primary: false },
+      { button: 'Configure', primary: true },
+    ],
   },
   {
     value: 'startJenkins',
     head: 'Coming soon',
-    buttons: [{ button: 'Cancel' }, { button: 'Configure' }],
+    description: 'This feature will be available soon',
+    buttons: [
+      { button: 'Cancel', primary: false },
+      { button: 'Configure', primary: true },
+    ],
   },
   {
     value: 'deleteInstance',
     head: 'Coming soon',
-    buttons: [{ button: 'Cancel' }, { button: 'Configure' }],
+    description: 'This feature will be available soon',
+    buttons: [
+      { button: 'Cancel', primary: false },
+      { button: 'Configure', primary: true },
+    ],
   },
 ];
 const feature_lists = [
@@ -124,6 +151,7 @@ class Carousels extends React.Component {
       tag: null,
       value: false,
       dialogOpen: false,
+      instanceDate: null,
     };
   }
   HandleDialogChange = (dialog, open) => {
@@ -135,7 +163,7 @@ class Carousels extends React.Component {
     this.setState({ tag, value, dialogOpen });
   };
   render() {
-    let { dialogOpen } = this.state;
+    let { dialogOpen, instanceDate } = this.state;
     return (
       <div>
         {/* <Dialog className='dialog_cards' open={newInstanceDialog} onClose={() => this.HandleDialogChange('newInstanceDialog', false)}>
@@ -260,7 +288,7 @@ class Carousels extends React.Component {
                         borderBottomStyle: 'solid',
                         borderBottomColor: '#c3c4c3',
                       }}>
-                      {/* {ele.description ? <DialogContentText>{ele.description}</DialogContentText> : ''} */}
+                      {ele.description ? <DialogContentText style={{ fontSize: '1.1rem', color: '#1976d2', marginTop: '25px' }}>{ele.description}</DialogContentText> : ''}
                       {ele.email ? <TextField autoFocus margin='dense' id='name' label='Email Address' type='email' fullWidth variant='standard' /> : ''}
                       {ele.fields?.map(fielding => (
                         <Grid
@@ -273,13 +301,37 @@ class Carousels extends React.Component {
                           <Grid item md={4}>
                             {fielding.name}
                           </Grid>
-                          <Grid item md={8}>
-                            <Select fullWidth={true} labelId='demo-simple-select-label' id='demo-simple-select'>
-                              {fielding.options.map(optioning => (
-                                <MenuItem value={optioning.key}>{optioning.key}</MenuItem>
-                              ))}
-                            </Select>
-                          </Grid>
+                          {fielding.dualBox ? (
+                            <>
+                              <Grid item md={4}>
+                                {/* <LocalizationProvider dateAdapter={AdapterDateFns}>
+                                  <DesktopDatePicker
+                                    value={null || instanceDate}
+                                    minDate={new Date('2017-01-01')}
+                                    onChange={newValue => {
+                                      this.setState({ instanceDate: newValue });
+                                    }}
+                                    renderInput={params => <TextField {...params} />}
+                                  />
+                                </LocalizationProvider> */}
+                              </Grid>
+                              <Grid item md={4}>
+                                <Select fullWidth={true} labelId='demo-simple-select-label' id='demo-simple-select'>
+                                  {fielding.options.map(optioning => (
+                                    <MenuItem value={optioning.key}>{optioning.key}</MenuItem>
+                                  ))}
+                                </Select>
+                              </Grid>
+                            </>
+                          ) : (
+                            <Grid item md={8}>
+                              <Select fullWidth={true} labelId='demo-simple-select-label' id='demo-simple-select'>
+                                {fielding.options.map(optioning => (
+                                  <MenuItem value={optioning.key}>{optioning.key}</MenuItem>
+                                ))}
+                              </Select>
+                            </Grid>
+                          )}
                         </Grid>
                       ))}
                     </DialogContent>
