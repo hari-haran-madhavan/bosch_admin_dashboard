@@ -9,9 +9,12 @@ import DialogContent from '@mui/material/DialogContent';
 import DialogTitle from '@mui/material/DialogTitle';
 import MenuItem from '@mui/material/MenuItem';
 import Select from '@mui/material/Select';
+import { DesktopDatePicker, LocalizationProvider } from '@mui/x-date-pickers';
+import { AdapterDateFns } from '@mui/x-date-pickers/AdapterDateFns';
 // import { AdapterDateFns } from '@mui/x-date-pickers/AdapterDateFns';
 // import { LocalizationProvider } from '@mui/x-date-pickers/LocalizationProvider';
 import * as React from 'react';
+import 'react-calendar/dist/Calendar.css';
 import Carousel from 'react-multi-carousel';
 import 'react-multi-carousel/lib/styles.css';
 import '../heroCarousel.css';
@@ -152,6 +155,7 @@ class Carousels extends React.Component {
       value: false,
       dialogOpen: false,
       instanceDate: null,
+      today: null,
     };
   }
   HandleDialogChange = (dialog, open) => {
@@ -163,7 +167,7 @@ class Carousels extends React.Component {
     this.setState({ tag, value, dialogOpen });
   };
   render() {
-    let { dialogOpen, instanceDate } = this.state;
+    let { dialogOpen, today, instanceDate } = this.state;
     return (
       <div>
         {/* <Dialog className='dialog_cards' open={newInstanceDialog} onClose={() => this.HandleDialogChange('newInstanceDialog', false)}>
@@ -304,16 +308,9 @@ class Carousels extends React.Component {
                           {fielding.dualBox ? (
                             <>
                               <Grid item md={4}>
-                                {/* <LocalizationProvider dateAdapter={AdapterDateFns}>
-                                  <DesktopDatePicker
-                                    value={null || instanceDate}
-                                    minDate={new Date('2017-01-01')}
-                                    onChange={newValue => {
-                                      this.setState({ instanceDate: newValue });
-                                    }}
-                                    renderInput={params => <TextField {...params} />}
-                                  />
-                                </LocalizationProvider> */}
+                                <LocalizationProvider dateAdapter={AdapterDateFns}>
+                                  <DesktopDatePicker label='mm/dd/yyyy' inputFormat='MM/dd/yyyy' value={today} onChange={e => this.setState({ today: e })} renderInput={params => <TextField {...params} />} />{' '}
+                                </LocalizationProvider>
                               </Grid>
                               <Grid item md={4}>
                                 <Select fullWidth={true} labelId='demo-simple-select-label' id='demo-simple-select'>
