@@ -9,8 +9,6 @@ import DialogContent from '@mui/material/DialogContent';
 import DialogTitle from '@mui/material/DialogTitle';
 import MenuItem from '@mui/material/MenuItem';
 import Select from '@mui/material/Select';
-import { DesktopDatePicker, LocalizationProvider } from '@mui/x-date-pickers';
-import { AdapterDateFns } from '@mui/x-date-pickers/AdapterDateFns';
 // import { AdapterDateFns } from '@mui/x-date-pickers/AdapterDateFns';
 // import { LocalizationProvider } from '@mui/x-date-pickers/LocalizationProvider';
 import * as React from 'react';
@@ -18,6 +16,7 @@ import 'react-calendar/dist/Calendar.css';
 import Carousel from 'react-multi-carousel';
 import 'react-multi-carousel/lib/styles.css';
 import '../heroCarousel.css';
+import DateAndTime from './dateandtime';
 const elements = [
   {
     value: 'newInstanceDialog',
@@ -36,7 +35,11 @@ const elements = [
       { name: 'Instance Name', options: [{ key: '1' }, { key: '2' }, { key: '3' }] },
       { name: 'Current jenkins version', options: [{ key: '1' }, { key: '2' }, { key: '3' }] },
       { name: 'Jenkins Version', options: [{ key: '1' }, { key: '2' }, { key: '3' }] },
-      { name: 'Select Date and Time', dualBox: true, options: [{ key: '1' }, { key: '2' }, { key: '3' }] },
+      {
+        name: 'Select Date and Time',
+        dualBox: true,
+        options: [{ key: '00:00' }, { key: '01:00' }, { key: '02:00' }, { key: '03:00' }, { key: '04:00' }, { key: '05:00' }, { key: '06:00' }, { key: '07:00' }, { key: '08:00' }, { key: '09:00' }, { key: '10:00' }, { key: '11:00' }, { key: '12:00' }, { key: '13:00' }, { key: '14:00' }, { key: '15:00' }, { key: '16:00' }, { key: '17:00' }, { key: '18:00' }, { key: '19:00' }, { key: '20:00' }, { key: '21:00' }, { key: '22:00' }, { key: '23:00' }],
+      },
     ],
     buttons: [
       { button: 'Cancel', primary: false },
@@ -169,95 +172,7 @@ class Carousels extends React.Component {
   render() {
     let { dialogOpen, today, instanceDate } = this.state;
     return (
-      <div>
-        {/* <Dialog className='dialog_cards' open={newInstanceDialog} onClose={() => this.HandleDialogChange('newInstanceDialog', false)}>
-          <DialogTitle>Schedule Restart</DialogTitle>
-          <DialogContent>
-            <DialogContentText>To subscribe to this website, please enter your email address here. We will send updates occasionally.</DialogContentText>
-            <TextField autoFocus margin='dense' id='name' label='Email Address' type='email' fullWidth variant='standard' />
-          </DialogContent>
-          <DialogActions>
-            <Button onClick={() => this.HandleDialogChange('newInstanceDialog', false)}>Cancel</Button>
-            <Button onClick={() => this.HandleDialogChange('newInstanceDialog', false)}>Subscribe</Button>
-          </DialogActions>
-        </Dialog> */}
-        {/* Schedule Update */}
-        {/* <Dialog className='dialog_cards' maxWidth={'md'} open={scheduleUpdateDialog} onClose={() => this.HandleDialogChange('scheduleUpdateDialog', false)}>
-          <DialogTitle className='dialog_title'>Schedule Update for a instance</DialogTitle>
-          <DialogContent>
-            <Grid container spacing={4}>
-              <Grid item md={4}>
-                Instance Name
-              </Grid>
-              <Grid item md={8}> */}
-        {/* <TextField autoFocus id='outlined-required name' margin='dense' type='email' fullWidth variant='standard' /> */}
-        {/* <Select fullWidth={true} labelId='demo-simple-select-label' id='demo-simple-select'>
-                  <MenuItem value={10}>Ten</MenuItem>
-                  <MenuItem value={20}>Twenty</MenuItem>
-                  <MenuItem value={30}>Thirty</MenuItem>
-                </Select>
-              </Grid>
-              <Grid item md={4}>
-                Current jenkins version
-              </Grid>
-              <Grid item md={8}> */}
-        {/* <TextField autoFocus id='outlined-required name' margin='dense' type='email' fullWidth variant='standard' /> */}
-        {/* <Select fullWidth={true} labelId='demo-simple-select-label' id='demo-simple-select'>
-                  <MenuItem value={10}>Ten</MenuItem>
-                  <MenuItem value={20}>Twenty</MenuItem>
-                  <MenuItem value={30}>Thirty</MenuItem>
-                </Select>
-              </Grid>
-              <Grid item md={4}>
-                Jenkins Version
-              </Grid>
-              <Grid item md={8}>
-                <Select fullWidth={true} labelId='demo-simple-select-label' id='demo-simple-select'>
-                  <MenuItem value={10}>Ten</MenuItem>
-                  <MenuItem value={20}>Twenty</MenuItem>
-                  <MenuItem value={30}>Thirty</MenuItem>
-                </Select>
-              </Grid>
-              <Grid item md={4}>
-                Select date and time
-              </Grid>
-
-              <Grid item md={4}> */}
-        {/* <TextField autoFocus id='outlined-required name' margin='dense' type='email' fullWidth variant='standard' /> */}
-        {/* </Grid>
-
-              <Grid item md={4}> */}
-        {/* <TextField autoFocus id='outlined-required name' margin='dense' type='email' fullWidth variant='standard' /> */}
-        {/* <Select fullWidth={true} labelId='demo-simple-select-label' id='demo-simple-select'>
-                  <MenuItem value={10}>Ten</MenuItem>
-                  <MenuItem value={20}>Twenty</MenuItem>
-                  <MenuItem value={30}>Thirty</MenuItem>
-                </Select>
-              </Grid>
-            </Grid> */}
-        {/* <DialogContentText>To subscribe to this website, please enter your email address here. We will send updates occasionally.</DialogContentText> */}
-        {/* </DialogContent>
-          <DialogActions>
-            <Button className='confirm_button dialog_button' onClick={() => this.HandleDialogChange('scheduleUpdateDialog', false)}>
-              <CalendarTodayIcon className='confirm_button_icon' />
-              Schedule
-            </Button>
-            <Button className='dialog_button cancel_button' onClick={() => this.HandleDialogChange('scheduleUpdateDialog', false)}>
-              <CancelIcon fontSize='small' /> Cancel
-            </Button>
-          </DialogActions>
-        </Dialog> */}
-        {/* coming soon */}
-        {/* <Dialog className='dialog_cards' fullWidth={true} open={comingsoon} onClose={() => this.HandleDialogChange('comingsoon', false)}>
-          <DialogTitle>Coming soon</DialogTitle>
-          <DialogContent>
-            <DialogContentText>This feature will be available in the upcoming version.</DialogContentText>
-          </DialogContent>
-          <DialogActions>
-            <Button onClick={() => this.HandleDialogChange('comingsoon', false)}>Cancel</Button>
-          </DialogActions>
-        </Dialog> */}
-        {/* Dialogs ends*/}
+      <React.Fragment>
         <Carousel responsive={responsive} className='carousel_hero'>
           {feature_lists.map(f => (
             <div className='carousel_cards' onClick={() => this.HandleDialogChange(f.dialog, true)}>
@@ -281,7 +196,6 @@ class Carousels extends React.Component {
                     }}>
                     <DialogTitle
                       style={{
-                        // borderWidth: '0.5px',
                         borderBottomStyle: 'solid',
                         borderBottomColor: '#c3c4c3',
                       }}>
@@ -306,20 +220,7 @@ class Carousels extends React.Component {
                             {fielding.name}
                           </Grid>
                           {fielding.dualBox ? (
-                            <>
-                              <Grid item md={4}>
-                                <LocalizationProvider dateAdapter={AdapterDateFns}>
-                                  <DesktopDatePicker label='mm/dd/yyyy' inputFormat='MM/dd/yyyy' value={today} onChange={e => this.setState({ today: e })} renderInput={params => <TextField {...params} />} />{' '}
-                                </LocalizationProvider>
-                              </Grid>
-                              <Grid item md={4}>
-                                <Select fullWidth={true} labelId='demo-simple-select-label' id='demo-simple-select'>
-                                  {fielding.options.map(optioning => (
-                                    <MenuItem value={optioning.key}>{optioning.key}</MenuItem>
-                                  ))}
-                                </Select>
-                              </Grid>
-                            </>
+                            <DateAndTime />
                           ) : (
                             <Grid item md={8}>
                               <Select fullWidth={true} labelId='demo-simple-select-label' id='demo-simple-select'>
@@ -349,7 +250,7 @@ class Carousels extends React.Component {
               </div>
             ))
           : ''}
-      </div>
+      </React.Fragment>
     );
   }
 }
